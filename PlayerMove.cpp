@@ -15,7 +15,10 @@ PlayerMove::PlayerMove(PlayerActor* owner)
 void PlayerMove::input()
 {
 	// Ž©—R—Ž‰º‚Ì‘JˆÚ‚Í‚±‚±‚Ås‚¤
-	if (mVelocityY > 0.0f && mPlayer->getPlayerState()->getType() != PlayerState::Type::Jump) {
+	if (mVelocityY > 0.0f && 
+		mPlayer->getPlayerState()->getType() != PlayerState::Type::Jump &&
+		mPlayer->getPlayerState()->getType() != PlayerState::Type::NormalAttack
+		) {
 		mPlayer->changeState(PlayerState::Type::Jump);
 	}
 

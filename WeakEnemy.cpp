@@ -211,9 +211,9 @@ MeleeEnemy::MeleeEnemy(Sequence* sequence)
     mAttackComp = new AttackComponent(this);
     // çUåÇèÓïÒÇÃê›íË
     mAttackInfo.damage = 10.0f;
-    mAttackInfo.duration = 1.0f;
-    mAttackInfo.colRect.width = 16.0f;
-    mAttackInfo.colRect.height = 16.0f;
+    mAttackInfo.duration = 0.3f;
+    mAttackInfo.colRect.width = 40.0f;
+    mAttackInfo.colRect.height = 60.0f;
     computeAttackRectPos(mAttackInfo.colRect);
     mAttackInfo.knockBack = 0.0f;
     mAttackInfo.targetMask = Actor::Type::Eplayer;
@@ -231,7 +231,10 @@ void MeleeEnemy::update()
         dropItem();
     }
     // ìñÇΩÇËîªíËï\é¶
-   // DrawRectangleRec(mRectangle, WHITE);
+    if (mEnemyState == E_attack) {
+        DrawRectangleRec(mAttackInfo.colRect, WHITE);
+
+    }
 }
 
 void MeleeEnemy::attack()

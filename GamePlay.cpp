@@ -67,13 +67,6 @@ GamePlay::~GamePlay()
 
 void GamePlay::input()
 {
-    // テスト入力
-    if (IsKeyPressed(KEY_ENTER)) {
-        mNext = new GameClear();
-    }
-    else if (IsKeyPressed(KEY_RIGHT_SHIFT)) {
-        mNext = new GameOver();
-    }
     // すべてのActorのinputを呼ぶ
     mUpdatingActors = true;
     for (Actor* actor : mActors) {
@@ -149,8 +142,6 @@ void GamePlay::update()
 
 void GamePlay::draw()
 {
-    //mStage->draw();
-
     for (auto sprite : mSprites)
     {
         sprite->draw();
@@ -159,9 +150,6 @@ void GamePlay::draw()
     EndMode2D();
 
     // uiの描画
-    DrawText("GamePlay", 100, 100, 40, BLACK);
-    DrawText("Press ENTER -> GameClear", 100, 200, 20, GRAY);
-    DrawText("Press RightShift -> GameOver", 100, 300, 20, GRAY);
     for (auto ui : mUIStack) {
         ui->draw();
     }
