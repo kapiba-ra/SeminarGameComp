@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Title.cpp">
+      <Filter>BASE\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>BASE\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>BASE\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>BASE\Sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>BASE\Sequence\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>BASE\Actor\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>BASE\Component\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveComponent.cpp">
+      <Filter>BASE\Component\move</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMove.cpp">
+      <Filter>BASE\Component\move</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>BASE\Component\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimSpriteComponent.cpp">
+      <Filter>BASE\Component\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyActor.cpp">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponActor.cpp">
+      <Filter>BASE\Actor\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponComponent.cpp">
+      <Filter>BASE\Component\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrowComponent.cpp">
+      <Filter>BASE\Component\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMove.cpp">
+      <Filter>BASE\Component\move</Filter>
+    </ClCompile>
+    <ClCompile Include="HpComponent.cpp">
+      <Filter>BASE\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrowActor.cpp">
+      <Filter>BASE\Actor\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>BASE\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScreen.cpp">
+      <Filter>BASE\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageUI.cpp">
+      <Filter>BASE\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSystem.cpp">
+      <Filter>BASE\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpawner.cpp">
+      <Filter>BASE\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerActor.cpp">
+      <Filter>BASE\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="WeakEnemy.cpp">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionActor.cpp">
+      <Filter>BASE\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>BASE\System</Filter>
+    </ClCompile>
+    <ClCompile Include="BossActor.cpp">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BeamActor.cpp">
+      <Filter>BASE\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMove.cpp">
+      <Filter>BASE\Component\move</Filter>
+    </ClCompile>
+    <ClCompile Include="LobProjectile.cpp">
+      <Filter>BASE\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="GuardComponent.cpp">
+      <Filter>BASE\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="MinionActor.cpp">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackComponent.cpp">
+      <Filter>SEMINER</Filter>
+    </ClCompile>
+    <ClCompile Include="BossHUD.cpp">
+      <Filter>BASE\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>BASE\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>SEMINER</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemActor.cpp">
+      <Filter>SEMINER</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>SEMINER</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject.cpp">
+      <Filter>BASE\Actor\StageObj</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SEMINER">
+      <UniqueIdentifier>{3bba075f-e706-4520-9a0c-359aa7fc99ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE">
+      <UniqueIdentifier>{2f84e47f-b6b4-4e13-bcae-c707cdbc1afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Sequence">
+      <UniqueIdentifier>{df87d8ce-4f81-49fb-a0a2-44a648e18a31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Sequence\Base">
+      <UniqueIdentifier>{f55c6754-a195-414a-963f-0892b652d7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\System">
+      <UniqueIdentifier>{a7abe063-8ef2-4772-baf6-e4c7e15a6c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\UI">
+      <UniqueIdentifier>{aadd4281-c4a7-479f-b922-2fe9b7826f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Component">
+      <UniqueIdentifier>{90d3eda6-aea8-440b-b649-86784932394c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Component\Base">
+      <UniqueIdentifier>{6aa0c632-46d1-4420-aa85-898d128c0a00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Component\move">
+      <UniqueIdentifier>{82d844e4-fd86-4e45-b7c6-32a36cada266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Component\sprite">
+      <UniqueIdentifier>{8db777b4-28ee-49c8-9c95-810e96de4d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor">
+      <UniqueIdentifier>{927e1375-dbd5-4881-9c68-a67c0db75d81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\Base">
+      <UniqueIdentifier>{1325b5a7-d764-4e5f-a14f-a8b62b06d14f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\Weapon">
+      <UniqueIdentifier>{38d5c057-df66-4f71-a0f5-74ff0c24e297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\Enemy">
+      <UniqueIdentifier>{bc6d3fa3-2bf0-4e72-8049-2310bd088b9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\Player">
+      <UniqueIdentifier>{c2e1b60b-4eec-47de-b89d-fe27fbe5b585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\StageObj">
+      <UniqueIdentifier>{c10a1f0e-0bf1-46b4-b3ec-ce360dc407b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Actor\Item">
+      <UniqueIdentifier>{11320727-28b8-4a63-a1d9-998a65f21778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BASE\Component\Weapon">
+      <UniqueIdentifier>{78986e02-eddf-410f-99d6-40d1b9d6fdaf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Title.h">
+      <Filter>BASE\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>BASE\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>BASE\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>BASE\Sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence.h">
+      <Filter>BASE\Sequence\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>BASE\Actor\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>BASE\Component\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMove.h">
+      <Filter>BASE\Component\move</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveComponent.h">
+      <Filter>BASE\Component\move</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>BASE\Component\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimSpriteComponent.h">
+      <Filter>BASE\Component\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyActor.h">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponActor.h">
+      <Filter>BASE\Actor\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponComponent.h">
+      <Filter>BASE\Component\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrowComponent.h">
+      <Filter>BASE\Component\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMove.h">
+      <Filter>BASE\Component\move</Filter>
+    </ClInclude>
+    <ClInclude Include="HpComponent.h">
+      <Filter>BASE\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrowActor.h">
+      <Filter>BASE\Actor\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>BASE\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScreen.h">
+      <Filter>BASE\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageUI.h">
+      <Filter>BASE\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSystem.h">
+      <Filter>BASE\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>BASE\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawner.h">
+      <Filter>BASE\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="WeakEnemy.h">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionActor.h">
+      <Filter>BASE\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>BASE\System</Filter>
+    </ClInclude>
+    <ClInclude Include="BossHUD.h">
+      <Filter>BASE\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BossActor.h">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BeamActor.h">
+      <Filter>BASE\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMove.h">
+      <Filter>BASE\Component\move</Filter>
+    </ClInclude>
+    <ClInclude Include="LobProjectile.h">
+      <Filter>BASE\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="GuardComponent.h">
+      <Filter>BASE\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionActor.h">
+      <Filter>BASE\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageTags.h">
+      <Filter>BASE</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>BASE</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackComponent.h">
+      <Filter>SEMINER</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackInfo.h">
+      <Filter>SEMINER</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>SEMINER</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemActor.h">
+      <Filter>SEMINER</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerActor.h">
+      <Filter>BASE\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject.h">
+      <Filter>BASE\Actor\StageObj</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
