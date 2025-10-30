@@ -119,7 +119,7 @@ void PlayerActor::stageCollision(const Rectangle& stageRec)
 			// ã‚©‚çÕ“Ë
 			if (mRectangle.y < colRec.y) {
 				mPosition.y -= colRec.height;
-				mPlayerMove->fixFloorCol();
+ 				mPlayerMove->fixFloorCol();
 			}
 			// ‰º‚©‚çÕ“Ë
 			else {

@@ -17,45 +17,45 @@
 #include "SoundSystem.h"
 
 // 数値調整（必要に応じて変更）
-static const float kBossHpMax           = 400.0f;
-static const float kGuardMax            = 180.0f;
+static const float kBossHpMax = 400.0f;
+static const float kGuardMax = 180.0f;
 static const float kGuardBreakInvincSec = 0.35f; // ガードブレイク直後のガード無敵
-static const float kHpLeakWhileGuard    = 0.10f; // ガード中のHPリーク(10%)
+static const float kHpLeakWhileGuard = 0.20f; // ガード中のHPリーク(10%)
 
 // ダメージタグ別のガード係数（小さいほどよく減る）
-static const float kGuardCoefNormal     = 1.0f;
+static const float kGuardCoefNormal = 1.0f;
 static const float kGuardCoefMeleeLight = 0.9f;
 static const float kGuardCoefMeleeHeavy = 0.7f;
-static const float kGuardCoefLob        = 0.8f;
-static const float kGuardCoefBeam       = 1.1f;
-static const float kGuardCoefExplosion  = 0.35f; // 爆発に弱い
+static const float kGuardCoefLob = 0.8f;
+static const float kGuardCoefBeam = 1.1f;
+static const float kGuardCoefExplosion = 0.35f; // 爆発に弱い
 
 // 攻撃CD
 static const float kCdMeleeLight = 1.2f;
 static const float kCdMeleeHeavy = 2.2f;
-static const float kCdLob        = 1.6f;
-static const float kCdBeam       = 3.0f;
+static const float kCdLob = 1.6f;
+static const float kCdBeam = 3.0f;
 
 // 召喚
 static const float kSummonInterval = 8.0f;
-static const int   kSummonCount    = 3;
+static const int   kSummonCount = 3;
 static const float kMinionLifeSeconds = 8.0f;
-static const float kMinionHealAmount  = 15.0f;
+static const float kMinionHealAmount = 15.0f;
 
 Boss::Boss(GamePlay* seq)
-: EnemyActor(seq, EnemyActor::Type::Boss)
+    : EnemyActor(seq, EnemyActor::Type::Boss)
 {
     // HP/ガード初期化
     mHpComp = new HpComponent(this, kBossHpMax, 0.0f);
-    mGuard  = new GuardComponent(this, kGuardMax, kGuardBreakInvincSec);
+    mGuard = new GuardComponent(this, kGuardMax, kGuardBreakInvincSec);
 
     // 基本見た目（暫定・必要なら差し替え）
     if (auto* gp = static_cast<GamePlay*>(getSequence())) {
-       Texture2D* tex = gp->getTexture("Assets/Boss.png");
-       if (tex) {
+        Texture2D* tex = gp->getTexture("Assets/Boss.png");
+        if (tex) {
             auto* spr = new SpriteComponent(this);
             spr->setTexture(*tex);
-       }
+        }
     }
 
     // 動き
@@ -73,8 +73,8 @@ void Boss::update() {
     // クールダウン経過
     if (mMeleeLightCd > 0) mMeleeLightCd -= dt;
     if (mMeleeHeavyCd > 0) mMeleeHeavyCd -= dt;
-    if (mLobCd        > 0) mLobCd        -= dt;
-    if (mBeamCd       > 0) mBeamCd       -= dt;
+    if (mLobCd > 0) mLobCd -= dt;
+    if (mBeamCd > 0) mBeamCd -= dt;
 
     tryGuardRecharge();
     tryAttacks(dt);
@@ -85,21 +85,22 @@ void Boss::ApplyDamage(float dmg, DamageTag tag) {
     // ガードへの係数適用
     float coef = kGuardCoefNormal;
     switch (tag) {
-        case DamageTag::MeleeLight:    coef = kGuardCoefMeleeLight; break;
-        case DamageTag::MeleeHeavy:    coef = kGuardCoefMeleeHeavy; break;
-        case DamageTag::ProjectileLob: coef = kGuardCoefLob;        break;
-        case DamageTag::Beam:          coef = kGuardCoefBeam;       break;
-        case DamageTag::Explosion:     coef = kGuardCoefExplosion;  break;
-        default:                       coef = kGuardCoefNormal;     break;
+    case DamageTag::MeleeLight:    coef = kGuardCoefMeleeLight; break;
+    case DamageTag::MeleeHeavy:    coef = kGuardCoefMeleeHeavy; break;
+    case DamageTag::ProjectileLob: coef = kGuardCoefLob;        break;
+    case DamageTag::Beam:          coef = kGuardCoefBeam;       break;
+    case DamageTag::Explosion:     coef = kGuardCoefExplosion;  break;
+    default:                       coef = kGuardCoefNormal;     break;
     }
 
     if (mGuard && mGuard->HasGuard()) {
         // ガードを減らし、HPへは少量だけ通す
         mGuard->TakeGuardDamage(dmg * coef, tag);
         if (mHpComp) mHpComp->TakeDamage(dmg * kHpLeakWhileGuard);
-    } else {
-        if (mHpComp) if (mHpComp->TakeDamage(dmg)) { 
-            setState(Edead); 
+    }
+    else {
+        if (mHpComp) if (mHpComp->TakeDamage(dmg)) {
+            setState(Edead);
             SoundSystem::instance().stopBGM();
             static_cast<GamePlay*>(mSequence)->onBossKilled();
         }
@@ -135,27 +136,29 @@ void Boss::tryAttacks(float dt) {
 
     // 近接：レンジ内なら優先
     if (dist <= meleeRange) {
-         // 前方に矩形を出して当たり判定（重→軽の優先）
-         const float offX = (mForward > 0 ? 32.0f : -92.0f); // 前方向へ
-         const Rectangle heavyHit { mPosition.x + offX, mPosition.y - 40.0f, 60.0f, 60.0f };
-         const Rectangle lightHit { mPosition.x + offX, mPosition.y - 36.0f, 56.0f, 56.0f };
- 
-         if (mMeleeHeavyCd <= 0.0f) {
-             if (CheckCollisionRecs(heavyHit, player->getRectangle())) {
-                 player->getHpComp()->TakeDamage(35.0f);
-             }
-             mMeleeHeavyCd = kCdMeleeHeavy;
-             return;
-         }
+        // 前方に矩形を出して当たり判定（重→軽の優先）
+        const float offX = (mForward > 0 ? 32.0f : -92.0f); // 前方向へ
+        const Rectangle heavyHit{ mPosition.x + offX, mPosition.y - 40.0f, 60.0f, 60.0f };
+        const Rectangle lightHit{ mPosition.x + offX, mPosition.y - 36.0f, 56.0f, 56.0f };
 
-         if (mMeleeLightCd <= 0.0f) {
-             if (CheckCollisionRecs(lightHit, player->getRectangle())) {
-                 player->getHpComp()->TakeDamage(18.0f);
+        if (mMeleeHeavyCd <= 0.0f) {
+            if (CheckCollisionRecs(heavyHit, player->getRectangle())) {
+                if (player->getPlayerState()->getType() == PlayerState::Type::Dodge) return;
+                player->getHpComp()->TakeDamage(35.0f);
             }
-             mMeleeLightCd = kCdMeleeLight;
-             return;
-         }
-     }
+            mMeleeHeavyCd = kCdMeleeHeavy;
+            return;
+        }
+
+        if (mMeleeLightCd <= 0.0f) {
+            if (CheckCollisionRecs(lightHit, player->getRectangle())) {
+                if (player->getPlayerState()->getType() == PlayerState::Type::Dodge) return;
+                player->getHpComp()->TakeDamage(18.0f);
+            }
+            mMeleeLightCd = kCdMeleeLight;
+            return;
+        }
+    }
 
     // 遠距離：レンジ外なら射撃
     if (mLobCd <= 0.0f) {

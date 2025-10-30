@@ -8,7 +8,7 @@ bool BeamActor::sDebugBeam = true; // DEBUG
 
 //--------------------------------------
 BeamActor::BeamActor(GamePlay* gp, Vector2 start, int forward)
-: Actor(gp, Actor::Eweapon), mGP(gp)
+    : Actor(gp, Actor::Eweapon), mGP(gp)
 {
     setForward(forward);
     setPosition(start);
@@ -30,7 +30,8 @@ void BeamActor::computeRectangle() // FIX
     if (mForward > 0) {
         // 右向き：左端が position.x
         mRectangle = { getPosition().x,          getPosition().y - halfH, mBeamW, mBeamH };
-    } else {
+    }
+    else {
         // 左向き：右端が position.x
         mRectangle = { getPosition().x - mBeamW, getPosition().y - halfH, mBeamW, mBeamH };
     }
@@ -48,7 +49,17 @@ void BeamActor::updateDamage()
     if (CheckCollisionRecs(player->getRectangle(), mRectangle)) {
         mHitThisFrame = true; // DEBUG
         if (auto* hp = player->getHpComp()) {
-            hp->TakeDamage(18.0f);
+            
+            float dmgLeak = 1.0f;
+            PlayerState* playerState = player->getPlayerState();
+            if (playerState->getType() == PlayerState::Type::Guard) {
+                static_cast<Guard*>(playerState)->onAttacked();
+                dmgLeak = 0.5f;
+            }
+            else  if (playerState->getType() == PlayerState::Type::Dodge) {
+                return;
+            }
+            hp->TakeDamage(18.0f * dmgLeak);
         }
     }
 }
@@ -116,7 +127,7 @@ void BeamActor::draw() const
 
     // DEBUG: 当たりの可視化（ON時のみ）
     if (sDebugBeam) { // DEBUG
-        const Color fill = mHitThisFrame ? Color{0,255,0,80} : Color{255,0,0,80}; // DEBUG
+        const Color fill = mHitThisFrame ? Color{ 0,255,0,80 } : Color{ 255,0,0,80 }; // DEBUG
         const Color line = mHitThisFrame ? GREEN : RED;                            // DEBUG
 
         DrawRectangleRec(mRectangle, fill);                 // DEBUG: 半透明塗り
@@ -124,8 +135,8 @@ void BeamActor::draw() const
 
         const float cy = mRectangle.y + mRectangle.height * 0.5f; // DEBUG: 中央ライン
         DrawLineEx({ mRectangle.x, cy },
-                   { mRectangle.x + mRectangle.width, cy },
-                   1.0f, (mHitThisFrame ? DARKGREEN : MAROON));    // DEBUG
+            { mRectangle.x + mRectangle.width, cy },
+            1.0f, (mHitThisFrame ? DARKGREEN : MAROON));    // DEBUG
 
         // 原点マーカー（左端中央）
         const Vector2 originL = { (mForward > 0) ? mRectangle.x : (mRectangle.x + mRectangle.width),
